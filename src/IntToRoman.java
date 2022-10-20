@@ -1,13 +1,15 @@
-public enum IntToRoman {
-    R1("I"), R2("II"), R3("III"), R4("IV"), R5("V"), R6("VI"), R7("VII"), R8("VIII"), R9("IX"), R10("X"), R11("XI"), R12("XII"), R13("XIII"), R14("XIV"), R15("XV"), R16("XVI"), R17("XVII"), R18("XVIII"), R19("XIX"), R20("XX");
-
-    private String s;
-
-    IntToRoman (String s) {
-        this.s = s;
-    }
-
-    public String getString() {
-        return s;
+public class IntToRoman {
+    public static String intToRoman(int integer) {
+        int[] decimalValue = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] romanValue = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        String romanResult = "";
+        for (int i = 0; i < decimalValue.length; i++) {
+            while (decimalValue[i] <= integer) {
+                romanResult += romanValue[i];
+                integer = integer - decimalValue[i];
+            }
+        }
+        return romanResult;
     }
 }
+
